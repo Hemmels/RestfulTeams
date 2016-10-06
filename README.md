@@ -25,3 +25,11 @@ And then
 gradlew run
 
 Or, run in an IDE by running the RestfulTeams class in the runtime package. If importing as a project, import as a general, or java project if prompted.
+
+If you have docker-machine running, you could try going 1 directory up, and building the Dockerfile with
+
+docker build RestfulTeams -t thisTag
+
+and then
+
+docker run thisTag
