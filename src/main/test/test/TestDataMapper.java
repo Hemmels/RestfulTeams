@@ -3,7 +3,6 @@ package test;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.Date;
 
 import org.junit.Test;

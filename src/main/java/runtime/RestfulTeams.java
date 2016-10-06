@@ -58,6 +58,9 @@ public class RestfulTeams {
         	logger.info("Added a new team: " + uuid);
             return uuid;
         });
+        
+        System.out.println("Ready for GET/POST requests!");
+        System.out.println("Here's a JSON team for reference!\n" + DataMapper.dataToJson(FootballTeam.SALISBURY_FC));
     }
 
 }

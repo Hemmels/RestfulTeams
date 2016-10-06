@@ -20,9 +20,9 @@ public class DataStore {
 
 	private final static Logger logger = LoggerFactory.getLogger(DataStore.class);
 
-	private static final MongoClient mongo = new MongoClient();
-	private static final MongoDatabase db = mongo.getDatabase("sis");
-	private static final MongoCollection<Document> mongoTable = db.getCollection("jsonfootballteams");
+//	private static final MongoClient mongo = new MongoClient();
+//	private static final MongoDatabase db = mongo.getDatabase("sis");
+//	private static final MongoCollection<Document> mongoTable = db.getCollection("jsonfootballteams");
 	
 	// Used here instead of a database structure
     private Map<String, FootballTeam> footballTeams = new HashMap<String, FootballTeam>();
@@ -64,6 +64,6 @@ public class DataStore {
 	}
 
 	public void saveTeam(String uuid, FootballTeam teamFromJson) {
-        mongoTable.insertOne(new Document(uuid, teamFromJson));
+//        mongoTable.insertOne(new Document(uuid, teamFromJson));
 	}
 }
