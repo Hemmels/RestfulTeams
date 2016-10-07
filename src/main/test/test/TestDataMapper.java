@@ -2,12 +2,9 @@ package test;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
 import java.util.Date;
 
 import org.junit.Test;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import data.DataMapper;
 import pojo.FootballTeam;
@@ -21,29 +18,20 @@ public class TestDataMapper {
 		assertTrue(json != null);
 		
 		// Does it make sense?
+		assertTrue(json != null);
+		assertTrue(json.length() > 0);
+		assertTrue(json.contains("owner") && json.contains("numberOfPlayers"));
 		assertTrue(json.contains("Salisbury") && json.contains("Matt Grigsby"));
 	}
 
 	@Test
 	public void testJsonToTeam(){
 		// String checks
-		String message = DataMapper.dataToJson(FootballTeam.SALISBURY_FC);
-		assertTrue(message != null);
-		assertTrue(message.length() > 0);
-		assertTrue(message.contains("owner") && message.contains("numberOfPlayers"));
+		String legitMessage = DataMapper.dataToJson(FootballTeam.SALISBURY_FC);
+		FootballTeam decoded = DataMapper.jsonToTeam(legitMessage);
 		
-		// Is it Json?
-		ObjectMapper mapper = new ObjectMapper();
-		FootballTeam decoded = null;
-		try {
-			decoded = mapper.readValue(message, FootballTeam.class);
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
+		// Is it a good, fully working object?
 		assertTrue(decoded != null);
-		
-		// Does it make sense?
 		assertTrue(decoded.getCity()!= null && decoded.getCity().length() > 0);
 		assertTrue(decoded.getOwner().length() > 0);
 		assertTrue(decoded.getOwner().length() < 50);
