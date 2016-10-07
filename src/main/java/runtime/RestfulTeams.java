@@ -28,18 +28,18 @@ public class RestfulTeams {
 			int teamMethod = ALL_TEAMS;
         	String nameParam = request.queryParams("name");
         	String sortParam = request.queryParams("sort");
-        	
-        	// Was the request for "sorted"?
-        	if (sortParam != null && !sortParam.equals("false")){
-            	teamMethod = SORTED;
-    	    	logger.info("Get request for '/teams' sorted");
-        	}
-        	// Or for 1 team?
-        	else if (nameParam != null){
+
+        	if (nameParam != null){
             	teamMethod = NAMED_TEAM;
     	    	logger.info("Get request for '/teams' with name: " + nameParam);
         	}
-        	else logger.info("Get request for '/teams'");
+        	else{
+	        	if (sortParam != null && !sortParam.equals("false")){
+	            	teamMethod = SORTED;
+	    	    	logger.info("Get request for '/teams' sorted");
+	        	}
+	        	else logger.info("Get request for '/teams'");
+        	}
         	
 		    response.status(HTTP_OK);
 		    response.type("application/json");
