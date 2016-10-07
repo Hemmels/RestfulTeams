@@ -2,6 +2,12 @@
 
 A Sparkjava web server with a simple in-memory Football team REST/Mongo service for lookup and entry via the web.
 
+07/10/16 11:27 - There is now a completed branch for running the webserice, mongo and docker from one file. 
+Checkout the **mongoenabled** branch, and run
+`docker-compose up` 
+from the checked-out directory.  
+(This utalises 2 images, the mongo base, and a small centos install with java and the (fat) jar file pre-installed in /usr/lib) 
+
 ### Methodology
 1. Read the requirements. Decided becuase this isn't a web application it doesn't need Spring anywhere.
 1. Created a Java 8 Web app project
