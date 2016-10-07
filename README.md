@@ -2,7 +2,7 @@
 
 A Sparkjava web server with a simple in-memory Football team REST/Mongo service for lookup and entry via the web.
 
-Methodology:
+### Methodology
 Read the requirements. Decided becuase this isn't a web application it doesn't need Spring anywhere.
 Created a Java 8 Web app project
 Added gradle nature; ran init (Gradle is super useful for configuring builds/projects)
@@ -16,6 +16,7 @@ Built application:
   - Added mongo as an afterthought.
   - Wrote tests to cover off all business logic methods.
 
+### Building and running
 To run, clone the repository and from the command line, run:
 
 gradlew build
@@ -33,3 +34,14 @@ docker build RestfulTeams -t thisTag
 and then
 
 docker run thisTag
+
+## Usage Instructions
+
+There are currently 4 accessable functions:
+
+getAllFootballTeams - any GET request not otherwise mentioned to '/teams'
+getAllFootballTeamsSorted - a GET request to '/teams' with a parameter of "sort" that isn't "false" (this can be anything "?sort", "?sort=x" etc, but not "?sort=false")
+getFootballTeamWithName - a GET request with a "name" parameter. This will override any of the above.
+addFootballTeam - a POST request to '/teams'. If there is a valid JSON entity for a team, this will be added. A team must have at least a name, a city, and a date of creation.
+
+On simply loading the application, it will print to the console an example team that was used to add itself (for copy/paste).
