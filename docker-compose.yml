@@ -1,0 +1,17 @@
+mongo:
+  image: mongo:latest
+  ports:
+    - "4000:27017"
+  volumes:
+    - mongo:/data/db
+  environment:
+    MONGODB_DATABASE: sis
+  command: mongod --smallfiles
+
+java:
+  image: hemmels/centoswithjava
+  command: java -jar usr/lib/RestfulTeams.jar
+  ports:
+    - "4567:4567"
+  links:
+    - mongo
