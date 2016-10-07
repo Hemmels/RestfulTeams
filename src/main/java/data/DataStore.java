@@ -5,10 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.bson.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.common.annotations.VisibleForTesting;
+import com.mongodb.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 import pojo.FootballTeam;
 
@@ -16,9 +20,9 @@ public class DataStore {
 
 	private final static Logger logger = LoggerFactory.getLogger(DataStore.class);
 
-//	private static final MongoClient mongo = new MongoClient();
-//	private static final MongoDatabase db = mongo.getDatabase("sis");
-//	private static final MongoCollection<Document> mongoTable = db.getCollection("jsonfootballteams");
+	private static final MongoClient mongo = new MongoClient();
+	private static final MongoDatabase db = mongo.getDatabase("sis");
+	private static final MongoCollection<Document> mongoTable = db.getCollection("jsonfootballteams");
 	
 	// Used here instead of a database structure
     private Map<String, FootballTeam> footballTeams = new HashMap<String, FootballTeam>();
@@ -60,6 +64,6 @@ public class DataStore {
 	}
 
 	public void saveTeam(String uuid, FootballTeam teamFromJson) {
-//        mongoTable.insertOne(new Document(uuid, teamFromJson));
+        mongoTable.insertOne(new Document(uuid, teamFromJson));
 	}
 }
