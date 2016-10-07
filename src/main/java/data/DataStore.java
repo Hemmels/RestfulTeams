@@ -45,7 +45,7 @@ public class DataStore {
 	public FootballTeam getFootballTeamWithName(String teamName) {
     	logger.info("Searching data for " + teamName);
 		// TODO: Is .get() on the collection faster than the stream filter?
-		List<FootballTeam> filteredTeams = footballTeams.keySet().stream().filter(n -> n.equals(teamName))
+		List<FootballTeam> filteredTeams = footballTeams.keySet().stream().filter(n -> n.equalsIgnoreCase(teamName))
 				.map((id) -> footballTeams.get(id)).collect(Collectors.toList());
 		// TODO: Force unique adding so this can only retuurn 1 or 0 team.
 		if (filteredTeams.size() > 0){
